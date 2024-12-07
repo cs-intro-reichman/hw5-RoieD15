@@ -7,19 +7,20 @@ public class MyString {
         //System.out.println(subsetOf("hel", "hello")); // true
         //System.out.println(subsetOf("leh", "hello")); // true
         //System.out.println(subsetOf("lo", "hello")); // true
-        //System.out.println(subsetOf("lloeg", "hello")); // false
-        //System.out.println(subsetOf("", "hello")); // true
-        //System.out.println(subsetOf("C", "ceiling")); // false
-        //System.out.println(subsetOf("c", "ceiling")); // true
+        System.out.println(subsetOf("sap", "space")); // true
+        System.out.println(subsetOf("spa", "space")); // true
+        System.out.println(subsetOf("pass", "space")); // false
+        System.out.println(subsetOf("c", "space")); // true
+        System.out.println(subsetOf("", "anything")); // true
         //System.out.println(spacedString("silent")); // 
         //System.out.println(spacedString("a")); // 
         //System.out.println(spacedString("")); // 
         //System.out.println(spacedString("hi"));
         //System.out.println(randomStringOfLetters(11));
-        System.out.println(remove("committee", "meet"));
-        System.out.println(remove("abc", "abc"));
-        System.out.println(remove("abc", "b"));
-        System.out.println(remove("hello", ""));
+        //System.out.println(remove("committee", "meet"));
+        //System.out.println(remove("abc", "abc"));
+        //System.out.println(remove("abc", "b"));
+        //System.out.println(remove("hello", ""));
         //System.out.println(countChar(hello, 'h'));
         //System.out.println(countChar(hello, 'l'));
         //System.out.println(countChar(hello, 'z'));
@@ -59,9 +60,16 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
+        String newStr2 = str2;
+        if(str1.equals(str2.substring(0, str1.length())))
+        return true;
         for(int i = 0; i < str1.length(); i++) {
-            if(countChar(str2, str1.charAt(i)) == 0)
+            if((countChar(newStr2, str1.charAt(i))) == 0)
             return false;
+            else {
+                int index = str2.indexOf(str1.charAt(i));
+                newStr2 = newStr2.substring(0,index) + newStr2.substring(index + 1);
+            }
         }
         return true;
     }
