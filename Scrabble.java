@@ -136,7 +136,7 @@ public class Scrabble {
 			// end-of-line characters.
 			String input = in.readString();
 			if (input.equals(".")) {
-				System.out.println("End of hand. Total score: " + score + " points\n");
+				System.out.println("End of hand. Total score: " + score + " points");
 				break;
 			}
 			if(MyString.subsetOf(input, hand)) {
@@ -145,16 +145,16 @@ public class Scrabble {
 					score = score + wordScore(input); 
 					System.out.println(input + " earned " + wordScore(input) + " points. Score: " + score + " points\n"); 
 				} else {
-					System.out.print("No such word in the dictionary. Try again.\n"); 
+					System.out.print("No such word in the dictionary. Try again."); 
 				}
 			} else {
 				System.out.print("Invalid word. Try again.");
 			}
 		}
 		if (hand.isEmpty()) {
-	        System.out.println("Ran out of letters. Total score: " + score + " points\n");
-		} else {
-			System.out.println("End of hand. Total score: " + score + " points\n");
+	       // System.out.println("Ran out of letters. Total score: " + score + " points\n");
+		//} else {
+			System.out.println("End of hand. Total score: " + score + " points");
 		}
 	}
 	
