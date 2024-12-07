@@ -70,26 +70,29 @@ public class Scrabble {
 		String tenPointsLetters = "qz";
 		for(int i = 0; i < word.length(); i++) {
 			char letter = word.charAt(i);
-			if(MyString.countChar(onePointLetters, letter) == 1){
+			if(MyString.countChar(onePointLetters, letter) == 1) {
 				score += 1;
 			}
-			if(MyString.countChar(twoPointsLetters, letter) == 1){
+			else if(MyString.countChar(twoPointsLetters, letter) == 1) {
 				score += 2;
 			}
-			if(MyString.countChar(threePointsLetters, letter) == 1){
+			else if(MyString.countChar(threePointsLetters, letter) == 1) {
 				score += 3;
 			}
-			if(MyString.countChar(fourPointsLetters, letter) == 1){
+			else if(MyString.countChar(fourPointsLetters, letter) == 1) {
 				score += 4;
 			}
-			if(MyString.countChar(fivePointsLetters, letter) == 1){
+			else if(MyString.countChar(fivePointsLetters, letter) == 1) {
 				score += 5;
 			}
-			if(MyString.countChar(eightPointsLetters, letter) == 1){
+			else if(MyString.countChar(eightPointsLetters, letter) == 1) {
 				score += 8;
 			}
-			if(MyString.countChar(tenPointsLetters, letter) == 1){
+			else if(MyString.countChar(tenPointsLetters, letter) == 1) {
 				score += 10;
+			}
+			else {
+				score = 0;
 			}
 		}
 		score = score * word.length();
@@ -174,10 +177,10 @@ public class Scrabble {
 	public static void main(String[] args) {
 		//// Uncomment the test you want to run
 		//testBuildingTheDictionary();  
-		//testScrabbleScore();    
+		testScrabbleScore();    
 		//testCreateHands();  
 		//testPlayHands();
-		playGame();
+		//playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
@@ -190,10 +193,13 @@ public class Scrabble {
 	}
 	
 	public static void testScrabbleScore() {
-		System.out.println(wordScore("bee"));	
-		System.out.println(wordScore("babe"));
+		System.out.println(wordScore("cat"));	
+		System.out.println(wordScore("dog"));
+		System.out.println(wordScore("quiz"));
 		System.out.println(wordScore("friendship"));
 		System.out.println(wordScore("running"));
+		System.out.println(wordScore("'"));
+		System.out.println(wordScore("a"));
 	}
 	
 	public static void testCreateHands() {
@@ -204,7 +210,7 @@ public class Scrabble {
 	public static void testPlayHands() {
 		init();
 		//playHand("ocostrza");
-		playHand("arbffip");
+		//playHand("arbffip");
 		//playHand("aretiin");
 	}
 }

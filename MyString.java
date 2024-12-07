@@ -7,6 +7,7 @@ public class MyString {
         //System.out.println(subsetOf("hel", "hello")); // true
         //System.out.println(subsetOf("leh", "hello")); // true
         //System.out.println(subsetOf("lo", "hello")); // true
+        System.out.println(subsetOf("runi", "enirungni")); // true
         System.out.println(subsetOf("sap", "space")); // true
         System.out.println(subsetOf("spa", "space")); // true
         System.out.println(subsetOf("pass", "space")); // false
@@ -61,13 +62,13 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
         String newStr2 = str2;
-        if(str1.equals(str2.substring(0, str1.length())))
-        return true;
         for(int i = 0; i < str1.length(); i++) {
             if((countChar(newStr2, str1.charAt(i))) == 0)
             return false;
             else {
-                int index = str2.indexOf(str1.charAt(i));
+                int index = newStr2.indexOf(str1.charAt(i));
+                if(index == -1)
+                return false;
                 newStr2 = newStr2.substring(0,index) + newStr2.substring(index + 1);
             }
         }
