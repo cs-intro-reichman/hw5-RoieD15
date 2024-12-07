@@ -131,30 +131,26 @@ public class Scrabble {
 		while (hand.length() > 0) {
 			System.out.println("Current Hand: " + MyString.spacedString(hand));
 			System.out.println("Enter a word, or '.' to finish playing this hand:");
-			// Reads the next "token" from the keyboard. A token is defined as a string of 
-			// non-whitespace characters. Whitespace is either space characters, or  
-			// end-of-line characters.
 			String input = in.readString();
 			if (input.equals(".")) {
+				System.out.println("End of hand. Total score: " + score + " points");
 				break;
 			}
 			if(MyString.subsetOf(input, hand)) {
 				if(isWordInDictionary(input)){
 					hand = MyString.remove(hand, input);
-					System.out.print(input + " earned " + wordScore(input) + " points.\n "); 
 					score = score + wordScore(input); 
-					System.out.println();
+					System.out.println(input + " earned " + wordScore(input) + " points.\n "); 
 				} else {
 					System.out.print("No such word in the dictionary. Try again.\n"); 
 				}
 			} else {
-				System.out.print("Invalid word. Try again.\n");
+				System.out.println("Invalid word. Try again.");
 			}
 			System.out.println("Score: " + score + " points.");
 		}
-		if (hand.length() == 0) {
+		if (hand.isEmpty()) {
 	        System.out.println("Ran out of letters. Total score: " + score + " points");
-		} else {
 			System.out.println("End of hand. Total score: " + score + " points");
 		}
 	}
