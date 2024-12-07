@@ -138,11 +138,17 @@ public class Scrabble {
 			if (input.equals(".")) {
 				break;
 			}
-			if(isWordInDictionary(input) && MyString.subsetOf(input, hand)) {
-				hand = MyString.remove(hand, input);
-				System.out.print(input + " earned " + wordScore(input) + " points. "); 
-				score = score + wordScore(input); 
-				System.out.println();
+			if(MyString.subsetOf(input, hand)) {
+				if(isWordInDictionary(input)){
+					hand = MyString.remove(hand, input);
+					System.out.print(input + " earned " + wordScore(input) + " points.\n "); 
+					score = score + wordScore(input); 
+					System.out.println();
+				} else {
+					System.out.print("No such word in the dictionary. Try again.\n"); 
+				}
+			} else {
+				System.out.print("Invalid word. Try again.\n");
 			}
 			System.out.println("Score: " + score + " points.");
 		}
@@ -177,7 +183,7 @@ public class Scrabble {
 	public static void main(String[] args) {
 		//// Uncomment the test you want to run
 		//testBuildingTheDictionary();  
-		testScrabbleScore();    
+		//testScrabbleScore();    
 		//testCreateHands();  
 		//testPlayHands();
 		//playGame();
