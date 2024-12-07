@@ -133,26 +133,39 @@ public class Scrabble {
 			System.out.println("Enter a word, or '.' to finish playing this hand:");
 			String input = in.readString();
 			if (input.equals(".")) {
-				System.out.println("End of hand. Total score: " + score + " points");
+				System.out.println("End of hand. Total score: " + score + " points\n");
 				break;
 			}
 			if(MyString.subsetOf(input, hand)) {
 				if(isWordInDictionary(input)){
 					hand = MyString.remove(hand, input);
 					score = score + wordScore(input); 
-					System.out.println(input + " earned " + wordScore(input) + " points.\n "); 
+					System.out.println(input + " earned " + wordScore(input) + " points. Score: " + score + " points\n"); 
 				} else {
-					System.out.print("No such word in the dictionary. Try again.\n"); 
+					System.out.print("No such word in the dictionary. Try again."); 
 				}
 			} else {
 				System.out.println("Invalid word. Try again.");
 			}
-			System.out.println("Score: " + score + " points.");
 		}
-		if (hand.isEmpty()) {
-	        System.out.println("Ran out of letters. Total score: " + score + " points");
-			System.out.println("End of hand. Total score: " + score + " points");
+		if (hand.length() == 0) {
+	        System.out.println("Ran out of letters. Total score: " + score + " points\n");
+		} else {
+			System.out.println("End of hand. Total score: " + score + " points\n");
 		}
+	}
+	
+
+	public static boolean isValidHandForWord(String hand) {
+		if(hand.isEmpty()) {
+			return false;
+		}
+		for(int i = 0; i < DICTIONARY.length; i++) {
+			if(MyString.subsetOf(DICTIONARY[i], hand)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	// Plays a Scrabble game. Prompts the user to enter 'n' for playing a new hand, or 'e'
@@ -181,7 +194,7 @@ public class Scrabble {
 		//testBuildingTheDictionary();  
 		//testScrabbleScore();    
 		//testCreateHands();  
-		//testPlayHands();
+		testPlayHands();
 		//playGame();
 	}
 
@@ -211,7 +224,7 @@ public class Scrabble {
 	}
 	public static void testPlayHands() {
 		init();
-		//playHand("ocostrza");
+		playHand("aretiin");
 		//playHand("arbffip");
 		//playHand("aretiin");
 	}
