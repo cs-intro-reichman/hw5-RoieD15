@@ -142,9 +142,7 @@ public class Scrabble {
 			if(MyString.subsetOf(input, hand)) {
 				if(isWordInDictionary(input)){
 					hand = MyString.remove(hand, input);
-					System.out.print(input + " earned " + wordScore(input) + " points\n "); 
 					score = score + wordScore(input); 
-					System.out.println();
 					System.out.println(input + " earned " + wordScore(input) + " points\n "); 
 				} else {
 					System.out.print("No such word in the dictionary. Try again.\n"); 
