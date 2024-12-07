@@ -145,10 +145,10 @@ public class Scrabble {
 					score = score + wordScore(input); 
 					System.out.println(input + " earned " + wordScore(input) + " points. Score: " + score + " points\n"); 
 				} else {
-					System.out.print("No such word in the dictionary. Try again."); 
+					System.out.print("No such word in the dictionary. Try again.\n"); 
 				}
 			} else {
-				System.out.print("Invalid word. Try again.");
+				System.out.print("Invalid word. Try again.\n");
 			}
 		}
 		if (hand.isEmpty()) {
@@ -160,9 +160,6 @@ public class Scrabble {
 	
 
 	public static boolean isValidHandForWord(String hand) {
-		if(hand.isEmpty()) {
-			return false;
-		}
 		for(int i = 0; i < DICTIONARY.length; i++) {
 			if(MyString.subsetOf(DICTIONARY[i], hand)) {
 				return true;
