@@ -143,14 +143,13 @@ public class Scrabble {
 				if(isWordInDictionary(input)){
 					hand = MyString.remove(hand, input);
 					score = score + wordScore(input); 
-					System.out.println(input + " earned " + wordScore(input) + " points\n "); 
+					System.out.println(input + " earned " + wordScore(input) + " points. Score: " + score + " points\n"); 
 				} else {
 					System.out.print("No such word in the dictionary. Try again.\n"); 
 				}
 			} else {
 				System.out.print("Invalid word. Try again.");
 			}
-			System.out.println("Score: " + score + " points\n");
 		}
 		if (hand.isEmpty()) {
 	        System.out.println("Ran out of letters. Total score: " + score + " points\n");
